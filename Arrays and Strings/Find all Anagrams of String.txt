@@ -1,0 +1,23 @@
+//slidingwindowtechniqueused
+
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        int[] freq = new int[26];
+        for(int i = 0; i < p.length(); i++) {
+            freq[p.charAt(i) - 'a']++;
+        }
+        int j = 0;
+        int rem = p.length();
+        List<Integer> res = new ArrayList();
+        for(int i = 0; i < s.length(); i++) {
+            while(j < s.length() && j - i < p.length()) {
+                if(freq[s.charAt(j++) - 'a']-- > 0) {
+                    rem--;
+                }
+            }
+            if(rem == 0 && j - i == p.length()) res.add(i);
+            if(freq[s.charAt(i) - 'a']++ >= 0) rem++;
+        }
+        return res;
+    }
+}
