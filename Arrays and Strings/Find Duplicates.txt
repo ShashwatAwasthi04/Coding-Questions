@@ -1,0 +1,16 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        int l=nums.length;
+        if(l==1||l==0)
+            return false;
+            
+        Arrays.sort(nums);
+        if(nums[1]==nums[0]||nums[l-1]==nums[l-2])
+            return true;
+        for(int i=1;i<l-2;i++){
+            if(nums[i]==nums[i+1])
+                return true;
+        }
+        return false;
+    }
+}
