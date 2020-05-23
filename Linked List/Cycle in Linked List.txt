@@ -1,0 +1,11 @@
+public boolean hasCycle(ListNode head) {
+        Set<ListNode> st=new HashSet<ListNode>();
+        while(head!=null){
+            if(st.contains(head))
+                return true;
+            else
+                st.add(head);
+            head=head.next;
+        }
+        return false;
+    }
