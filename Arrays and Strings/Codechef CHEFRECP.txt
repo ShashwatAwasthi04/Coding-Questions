@@ -1,0 +1,48 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int a[]=new int[n];
+		    for(int i=0;i<n;i++)
+		    a[i]=sc.nextInt();
+		    
+		    ArrayList<Integer> al=new ArrayList<Integer>();
+		    int val=a[0];int c=1;
+		    al.add(a[0]);
+		    for(int i=1;i<n;i++){
+		        if(al.contains(a[i])){
+		            if(val==a[i])
+		            c++;
+		        }
+		        else{
+		            al.add(a[i]);
+		            val=a[i];
+		            c++;
+		        }
+		    }
+		    
+		    
+		      int arr[]=new int[1000];
+		        for(int i=0;i<n;i++){
+		            arr[a[i]-1]++;
+		        }
+		        ArrayList<Integer> all=new ArrayList<Integer>();
+		        for(int i=0;i<1000;i++){
+		            if(all.contains(arr[i])&&arr[i]>0)
+		            c--;
+		            else
+		            all.add(arr[i]);
+		        }
+		   
+		   if(c==n) 
+		   System.out.println("YES");
+		    else
+		    System.out.println("NO");
+		    
+		}
+	}
+}
