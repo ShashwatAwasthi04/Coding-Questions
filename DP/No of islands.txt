@@ -1,0 +1,31 @@
+class Solution {
+    public void turnitone(char[][] grid,int i,int j){
+        
+        if(i<0||i>=grid.length||j<0||j>=grid[i].length ||  grid[i][j]=='0')
+            return;
+        grid[i][j]='0';
+        
+        turnitone(grid,i+1,j);
+        turnitone(grid,i-1,j);
+        turnitone(grid,i,j+1);
+        turnitone(grid,i,j-1);
+    }
+    
+    public int numIslands(char[][] grid) {
+        if(grid.length==0)
+            return 0;
+        int rown=grid.length;
+        int coln=grid[0].length;
+        int c=0;
+        for(int i=0;i<rown;i++){
+            for(int j=0;j<coln;j++){
+                if(grid[i][j]=='1'){
+                    c++;
+                    turnitone(grid,i,j);  
+                }
+            }
+        }
+        return c;
+    }
+    
+}
