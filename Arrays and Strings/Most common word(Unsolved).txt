@@ -1,0 +1,19 @@
+lass Solution {
+    public ArrayList<String> extractWord(String n){
+        ArrayList<String> al=new ArrayList<String>();
+        n=n.trim();
+        n=n+" ";
+        int l=n.length();int val=0;
+        for(int i=1;i<l;i++){
+            if(n.charAt(i)==' '||){
+                String temp=n.substring(val,i);
+                val=i;
+                al.add(temp);
+            }
+                
+        }
+    }
+    public String mostCommonWord(String paragraph, String[] banned) {
+        paragraph=paragraph
+    }
+}
