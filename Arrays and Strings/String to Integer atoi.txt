@@ -1,0 +1,47 @@
+class Solution {
+    public int myAtoi(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        int i = 0;
+        boolean neg = false;
+        while (i<str.length()) {//parses till sign
+            if (str.charAt(i) == ' ') {
+                i++;
+                continue;
+            } else if (str.charAt(i) == '-') {
+                i++;
+                neg = true;
+                break;
+            } else if (str.charAt(i) == '+') {
+                i++;
+                neg = false;
+                break;
+            } else {
+                break;
+            }
+        }
+
+        char zero = '0';
+        long num = 0;
+        long prev = 0;
+        for (; i < str.length(); i++) {
+            int temp =  str.charAt(i) - zero;
+            if (temp < 0 || temp > 9) {
+                if(num > 0) {
+                    break;
+                }
+                return 0;
+            }
+            num =  num * 10 + temp;
+            if(num < prev) {
+                num = prev;
+            }
+            prev = num;
+        }
+        if(num > Integer.MAX_VALUE) {
+            return neg ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+        } else
+        return neg ? (int)(-1 * num) : (int)num;
+    }
+    }
