@@ -1,19 +1,21 @@
-lass Solution {
-    public ArrayList<String> extractWord(String n){
-        ArrayList<String> al=new ArrayList<String>();
-        n=n.trim();
-        n=n+" ";
-        int l=n.length();int val=0;
-        for(int i=1;i<l;i++){
-            if(n.charAt(i)==' '||){
-                String temp=n.substring(val,i);
-                val=i;
-                al.add(temp);
-            }
-                
+class Solution {
+   
+    public String mostCommonWord(String para, String[] banned) {
+        para=para.toLowerCase();
+        String[] words=para.split("[ !?',;.]+");
+        
+        HashMap<String, Integer> hm=new HashMap<String,Integer>();
+        for(String i:words){
+            hm.put(i,hm.getOrDefault(i, 0) + 1);
         }
-    }
-    public String mostCommonWord(String paragraph, String[] banned) {
-        paragraph=paragraph
+        for(String word : banned) 
+            if(hm.containsKey(word)) 
+                hm.remove(word);
+        
+        String res = null;
+        for(String word : hm.keySet())
+            if(res == null || hm.get(word) > hm.get(res))
+                res = word;
+        return res;    
     }
 }
