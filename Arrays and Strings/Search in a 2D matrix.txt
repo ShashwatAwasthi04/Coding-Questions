@@ -1,0 +1,38 @@
+class Solution {
+boolean binarySearch(int[] arr,int target)
+{
+int low=0;
+int high=arr.length;
+
+    while(low<high)
+    {
+        int mid=(low+high)/2;
+        if(arr[mid]==target)
+            return true;
+        if(arr[mid]<target)
+            low=mid+1;
+        else
+            high=mid;
+            
+    }
+    return false;
+}
+public boolean searchMatrix(int[][] matrix, int target) {
+    boolean found=false;
+   if(matrix==null || matrix.length==0 || matrix[0].length==0)
+        return false;
+    if(matrix[0].length==0)
+        return false;
+    if((matrix[0].length==1)&&matrix[0][0]==target)
+        return true;
+    for(int[] inner: matrix)
+    {
+        if(target>=inner[0]&&target<=inner[inner.length-1])
+		{
+            found=binarySearch(inner,target);                  
+            break;
+        }
+    }
+    return found;
+}
+}
