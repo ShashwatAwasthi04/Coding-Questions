@@ -1,0 +1,18 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        int la = a.length()-1,lb = b.length()-1;
+        int carry =0;
+        StringBuilder sb = new StringBuilder();
+        while(la>=0 || lb>=0){
+            int value_a =  la >=0? a.charAt(la)-'0':0;
+            int value_b =  lb >=0? b.charAt(lb)-'0':0;
+            int plus = value_a +value_b+carry;
+            sb.append(plus%2);
+            carry = plus /2; 
+            la--;
+            lb--;
+        }
+        if(carry ==1) sb.append(carry);
+        return sb.reverse().toString();
+    }
+}
