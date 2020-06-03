@@ -1,0 +1,14 @@
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(int wordStart = s.length()-1,end;wordStart>=0; wordStart--){
+            if(s.charAt(wordStart)!=' '){
+                end = wordStart;
+                wordStart = s.lastIndexOf(" ",wordStart);
+                sb.append(s.substring(wordStart+1,end+1)).append(" "); 
+            }
+                       
+        }
+        return sb.toString().trim();
+    }
+}
