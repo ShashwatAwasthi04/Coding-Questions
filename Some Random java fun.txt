@@ -1,0 +1,55 @@
+Reverse an Array in Java
+
+Collections.reverse(Arrays.asList(array));
+
+
+Sum a List of Numbers
+
+IntStream.range(1, 1000).sum();
+
+2)Check if a String contains at least one of the given keyword
+
+List<String> wordList = Arrays.asList("java", "feature", "love");
+		String str = "Dummy text. Java 8 has powerful features";
+System.out.println(wordList.stream().anyMatch(str::contains));
+
+3)Copy file from One location to another
+
+Files.copy(Paths.get("/data/text/file.txt"),Paths.get
+
+4)Binary representation of number n
+
+Integer.toBinaryString(int n);
+
+5)Executing a commented Code
+
+// \u000d System.out.println("comment executed"); 
+
+6)Make a collection unmodifiable
+
+public static final Collection secret=
+Collections.unmodifiableCollection(Arrays.asList("Jimmy","Carter","JOhn") );
+
+7)Faster Multiplication and Division
+
+n = n << 1;  // Multiply n with 2 
+n = n >> 1;  // Divide n by 2
+ 
+8)Sort an Array
+
+Arrays.sort(arrayReference);
+
+9)Input a character using Scanner
+
+char c = sccanner.next().charAt(0);
+
+
+
+Let double K = Math.log10(N);
+now K = K - Math.floor(K);
+int X = (int)Math.pow(10, K);
+X will be the most significant digit.
+
+
+
+No. of digits in N = Math.floor(Math.log10(N)) + 1;
