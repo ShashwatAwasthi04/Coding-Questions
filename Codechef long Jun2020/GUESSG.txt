@@ -11,32 +11,37 @@ class Codechef
 	public static void main (String[] args) throws java.lang.Exception
 	{
 	    Scanner sc=new Scanner(System.in);
-		int n=sc.nextInt();
-		int q=1;
-		int l=1;int e=n-1;int l2=1;int e2=n-1;
-		while(true){
-		    if(q%2==1){
-		        q++;
-		        int m=(l+e)/2;
-		        System.out.println(m);
+		long n=sc.nextLong();
+		int query_count=1;
+		long l1=1;long e1=n;
+		long l2=1;long e2=n;
+		while(1==1){
+		    if(query_count%2==0){
+		        
+		        long searchval=(l1+e1)/2;
+		        System.out.println(searchval);
+		        query_count++;
 		        String s=sc.next();
 		        if(s.equals("E"))
-		        break;
-		        else if(s.equals("L"))
-		        l=m+1;
+		        System.exit(0);
+		        else if(s.equals("G"))
+		        l1=searchval+1;
 		        else
-		        e=m-1;
-		    }else{
-		        q++;
-		    int m=(l2+e2)/2;
-		        System.out.println(m);
+		        e1=searchval-1;
+		    }
+		    
+		    else{
+		        
+		    long searchval=(l2+e2)/2;
+		        System.out.println(searchval);
+		        query_count++;
 		        String s=sc.next();
 		        if(s.equals("E"))
-		        break;
-		        else if(s.equals("L"))
-		        l2=m+1;
+		        System.exit(0);
+		        else if(s.equals("G"))
+		        l2=searchval+1;
 		        else
-		        e2=m-1;
+		        e2=searchval-1;
 		    }
 		}
 	}
