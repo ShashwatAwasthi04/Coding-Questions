@@ -1,18 +1,33 @@
 class Solution {
-    public String rev(String x){
-        int l=x.length();
-        String w="";
-        for(int i=0;i<l;i++){
-            w=x.charAt(i)+w;
-        }
-        return w;
-    }
     public String longestPalindrome(String s) {
-        String srev=rev(s);
-        
+        if(s == null || s.length() == 0) {
+            return "";
+        }
+        String lpalandrome = "";
+        for(int i=0 ;i<s.length(); i++) {
+            String currentPalandrome = checkForPalandrome(i, i, s);
+            lpalandrome = (currentPalandrome.length() >lpalandrome.length()) ? currentPalandrome : lpalandrome;
+        }
+        for(int i=1; i<s.length(); i++) {
+            if(s.charAt(i) == s.charAt(i-1)){
+                String currentPalandrome = checkForPalandrome(i-1, i, s);
+                 lpalandrome = (currentPalandrome.length() >lpalandrome.length()) ? currentPalandrome : lpalandrome;
+            }
+        }
+        return lpalandrome;
         
     }
+    
+    public String checkForPalandrome(int i, int j, String s) {
+        String palandrome = s.substring(i, j+1);
+       
+        i = i-1;
+        j = j+1;
+        if(i >= 0 && i < s.length() && j >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+            palandrome = checkForPalandrome(i,j,s);
+        } 
+        return palandrome;
+        
+    }
+    
 }
-
-
-Remember the approach is by reversing the initial string and finding the longest common substring in both
