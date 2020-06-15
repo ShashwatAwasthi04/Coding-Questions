@@ -1,29 +1,207 @@
-/* package codechef; // don't place package name! */
-
 import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader; 
+import java.util.Scanner; 
+import java.util.StringTokenizer;
 
-/* Name of the class has to be "Main" only if the class is public. */
-class Codechef
-{
-	public static void main (String[] args) throws java.lang.Exception
-	{
-		Scanner sc=new Scanner(System.in);
-		int t=sc.nextInt();
-		while(t>0){
-		    int p=sc.nextInt();
-		    int q=sc.nextInt();
-		    int r=sc.nextInt();
-		    
-		    int a=sc.nextInt();
-		    int b=sc.nextInt();
-		    int c=sc.nextInt();
-		    
-		    
-		    
-		    
-		    t--;
-		}
+ class GFG{
+    
+    
+    
+    
+    static class FastReader 
+    { 
+        BufferedReader br; 
+        StringTokenizer st; 
+  
+        public FastReader() 
+        { 
+            br = new BufferedReader(new
+                     InputStreamReader(System.in)); 
+        } 
+  
+        String next() 
+        { 
+            while (st == null || !st.hasMoreElements()) 
+            { 
+                try
+                { 
+                    st = new StringTokenizer(br.readLine()); 
+                } 
+                catch (IOException  e) 
+                { 
+                    e.printStackTrace(); 
+                } 
+            } 
+            return st.nextToken(); 
+        } 
+  
+        int nextInt() 
+        { 
+            return Integer.parseInt(next()); 
+        } 
+  
+        long nextLong() 
+        { 
+            return Long.parseLong(next()); 
+        } 
+  
+        double nextDouble() 
+        { 
+            return Double.parseDouble(next()); 
+        } 
+  
+        String nextLine() 
+        { 
+            String str = ""; 
+            try
+            { 
+                str = br.readLine(); 
+            } 
+            catch (IOException e) 
+            { 
+                e.printStackTrace(); 
+            } 
+            return str; 
+        } 
+    } 
+  
+    
+    
+    
+    
+	static int x=0,y=0,z=0;
+    public static int recur3(long p,long q,long r,long a,long b,long c){
+        int res=3;
+       
+        if(p==a){
+            return recur2(q,r,b,c);
+        }
+        
+        if(p!=q && x==0){
+            long rn=(b-a)/(q-p);x=1;
+            res=Math.min(res,1+recur3(p*rn,q,r,a,b,c));
+            res=Math.min(res,1+recur3(p*rn,q*rn,r,a,b,c));
+            res=Math.min(res,1+recur3(p*rn,q,r*rn,a,b,c));
+            res=Math.min(res,1+recur3(p*rn,q*rn,r*rn,a,b,c));
+        }
+        if(a!=b && y==0){
+            long cd=(p*b-q*a)/(a-b);y=1;
+            res=Math.min(res,1+recur3(p+cd,q,r,a,b,c));
+            res=Math.min(res,1+recur3(p+cd,q+cd,r,a,b,c));
+            res=Math.min(res,1+recur3(p+cd,q,r+cd,a,b,c));
+            res=Math.min(res,1+recur3(p+cd,q+cd,r+cd,a,b,c));
+        }
+        long prod=0,sum=a-p;
+        if(p!=0 && a%p==0){
+            prod=a/p;
+            res=Math.min(res,1+recur2(q*prod,r,b,c)); res=Math.min(res,1+recur2(q,r*prod,b,c));
+            res=Math.min(res,1+recur2(q*prod,r*prod,b,c));
+        }
+        if(p==0 && a==0){
+            prod=0;
+            res=Math.min(res,1+recur2(q*prod,r,b,c));
+            
+            res=Math.min(res,1+recur2(q,r*prod,b,c));
+            
+            res=Math.min(res,1+recur2(q*prod,r*prod,b,c));
+        }
+        res=Math.min(res,1+recur2(q+sum,r,b,c)); res=Math.min(res,1+recur2(q,r+sum,b,c));  res=Math.min(res,1+recur2(q+sum,r+sum,b,c));
+        
+        return res;
+    }
+    public static int recur2(long p,long q,long a,long b){
+        
+        int res=2;
+      
+        if(p==a){ return recur1(q,b);
+        }
+        long prod=0,sum=a-p;
+        if(p!=0 && a%p==0){
+            
+            prod=a/p; res=Math.min(res,1+recur1(q,b));
+            res=Math.min(res,1+recur1(q*prod,b));
+            
+        }
+        if(p==0 && a==0){
+            
+            prod=0;  res=Math.min(res,1+recur1(q,b));
+            
+            res=Math.min(res,1+recur1(q*prod,b));
+        }
+        res=Math.min(res,1+recur1(q,b));
+        
+        res=Math.min(res,1+recur1(q+sum,b));
+        
+        return res;
+    }
+    public static int recur1(long p,long a){
+       
+        if(p==a)return 0;
+        
+        return 1;
+    }
+	public static void main(String[] args) 
+	{ 
+		FastReader sc=new FastReader();
+	//	Scanner sc=new Scanner(System.in);
+	    int t=sc.nextInt();
+	    while(t-->0){
+	        
+	       long p=sc.nextLong();
+	       long q=sc.nextLong();
+	       long r=sc.nextLong();
+	       
+	        int a=sc.nextInt();
+	        int b=sc.nextInt();
+	       int c=sc.nextInt();
+	        
+	        int ans=3;
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	        
+	        ans
+	        =Math.min(ans,recur3(p,q,r,a,b,c));
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	       
+	        ans
+	        =Math.min(ans,recur3(p,r,q,a,c,b));
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	        
+	        ans
+	        =Math.min(ans,recur3(q,p,r,b,a,c));
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	       
+	        ans
+	        =Math.min(ans,recur3(q,r,p,b,c,a));
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	     
+	        ans
+	        =Math.min(ans,recur3(r,p,q,c,a,b));
+	        
+	        x=0;
+	        y=0;
+	        z=0;
+	        
+	        ans
+	        =Math.min(ans,recur3(r,q,p,c,b,a));
+	        
+	        System.out.println(ans);
+	    }
 	}
 }
