@@ -1,0 +1,35 @@
+class Solution {
+    public int calculateMinimumHP(int[][] dungeon) {
+        if(dungeon==null || dungeon.length==0 || dungeon[0].length==0) return 1;  
+   int m=dungeon.length; 
+        
+   int n=dungeon[0].length; 
+        
+   int[] hp=new int[n];  
+   hp[n-1]=Math.max(1,1-dungeon[m-1][n-1]);  
+        
+   for(int j=n-2;j>=0;j--){  
+       
+     hp[j]=Math.max(1,hp[j+1]-dungeon[m-1][j]);  
+       
+   }  
+   for(int i=m-2;i>=0;i--){ 
+       
+     hp[n-1]=Math.max(1,hp[n-1]-dungeon[i][n-1]); 
+       
+     for(int j=n-2;j>=0;j--){  
+         
+       hp[j]=Math.max(1,Math.min(hp[j],hp[j+1])-dungeon[i][j]);
+         
+     }  
+   }  
+   return hp[0];
+    }
+}
+
+
+
+
+Using the example given above, obviously, the knight must be at least 6 hp before he enter the princess grid,if the knight came from the upside grid[1][2], he must have at least 5 hp to ensure he can save the princess, while if the knight came from the left side grid[1][2], the knight need to have at least 1 hp to save the princess. For grid[1][1], it has two options, either go to its right, or go downwards, if it moves to right, the minimum hp is Math.max(5+10,1)=15, on the other hand if it move downwards, the minimum hp is Math.max(1+10,1)=11, so the minimum hp before he enter this grid and can still save the princess is Math.min(15,11)=11. 
+Summary:The minimum hp for right column is hp[i-1][j]= Math.max(hp[i][j]-dungeon[i-1][j], 1). For bottom row, hp[i][j-1]=Math.max(hp[i][j]-dungeon[i][j-1], 1). For all others, hp[i-1][j-1]= Math.min(Math.max(hp[i][j-1]-dungeon[i-1][j-1], 1), Math.max(hp[i-1][j]-dungeon[i-1][j-1]));
+Similarly, we can use one dimensional array instead of 2-d to calculate the final minimum hp.
