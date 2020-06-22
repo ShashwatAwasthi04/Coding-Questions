@@ -1,0 +1,72 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+    public static boolean[] subsum(int w[],int c,int n){
+       boolean dp[][]=new boolean[n+1][c+1];
+       for(int i=0;i<n+1;i++){
+           for(int j=0;j<c+1;j++){
+               if(i==0&&j==0)
+               dp[i][j]=true;
+               else if(i==0)
+               dp[i][j]=true;
+               else if(j==0)
+               dp[i][j]=false;
+           }
+       }
+       for(int i=1;i<n+1;i++){
+           for(int j=1;j<c+1;j++){
+               if(w[i-1]<=j){
+                   dp[i][j]=(dp[i-1][j-w[i-1]])||(dp[i-1][j]);
+               }
+               else
+               dp[i][j]=dp[i-1][j];
+           }
+       }
+       return dp[n];
+    }
+	public static void main (String[] args) {
+	    
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    
+		    int wt[]=new int[n];
+		    int sum=0;
+		    for(int i=0;i<n;i++){
+		    wt[i]=sc.nextInt();
+		    sum+=wt[i];
+		    }
+		    boolean profit[]=subsum(wt,sum,n);
+		    int min=Integer.MAX_VALUE;
+		    for(int i=0;i<(profit.length/2);i++){
+		        if((sum-2*i)<min)
+		        min=sum-2*i;
+		    }
+		    System.out.println(min);
+		}
+	}
+}
+
+
+
+
+
+Range of both sums = [0,sum of array elements]
+
+The Values will be absolutely taken from 0 to total sum of array
+
+
+
+
+Now min sum is
+
+Minimum of {Range-2*s1}
+
+Also the last line of DP denotes
+
+The value of capacities when all the values of array are taken
