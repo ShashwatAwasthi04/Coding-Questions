@@ -1,0 +1,52 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+    
+    
+    public static int rodCut(int w[],int val[],int c,int n){
+        int dp[][]=new int[n+1][c+1];
+        
+        for(int i=1;i<n+1;i++){
+            for(int j=1;j<c+1;j++){
+                if(w[i-1]<=j){
+                    dp[i][j]=Math.max(val[i-1]+dp[i][j-w[i-1]],dp[i-1][j]);
+                }
+                else
+                    dp[i][j]=dp[i-1][j];
+            }
+        }
+        return dp[n][c];
+    }
+	public static void main (String[] args) {
+	    
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int l=sc.nextInt();
+		    int pr[]=new int[n];
+		    for(int i=0;i<n;i++)
+		    pr[i]=sc.nextInt();
+		    int len[]=new int[n];
+		    for(int i=0;i<n;i++)
+		    len[i]=sc.nextInt();
+		    
+		    int profit=rodCut(len,pr,l,n);
+		    System.out.println(profit);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+This is just implemenation of Unbounded Knapsack
+Same values, if length is not given, assume as equal parts
