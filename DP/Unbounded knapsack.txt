@@ -1,37 +1,48 @@
-public class UboundedKnapsack { 
-      
-    private static int max(int i, int j) { 
-            return (i > j) ? i : j; 
-    } 
-      
-    // Returns the maximum value with knapsack 
-    // of W capacity 
-    private static int unboundedKnapsack(int W, int n,  
-                                int[] val, int[] wt) { 
-          
-        // dp[i] is going to store maximum value 
-        // with knapsack capacity i. 
-        int dp[] = new int[W + 1]; 
-          
-        // Fill dp[] using above recursive formula 
-        for(int i = 0; i <= W; i++){ 
-            for(int j = 0; j < n; j++){ 
-                if(wt[j] <= i){ 
-                    dp[i] = max(dp[i], dp[i - wt[j]] +  
-                                val[j]); 
-                } 
-            } 
-        } 
-        return dp[W]; 
-    } 
-  
-    // Driver program 
-    public static void main(String[] args) { 
-        int W = 100; 
-        int val[] = {10, 30, 20}; 
-        int wt[] = {5, 10, 15}; 
-        int n = val.length; 
-        System.out.println(unboundedKnapsack(W, n, val, wt)); 
-    } 
-} 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+    
+    
+    public int knapsack(int w[],int val[],int c,int n){
+        int dp[][]=new int[n+1][c+1];
+            
+        for(int i=1;i<n+1;i++){
+            for(int j=1;j<c+1;j++){
+                if(w[i-1]<=j){
+                    dp[i][j]=Math.max(val[i-1]+dp[i][j-w[i-1]],dp[i-1][j]);
+                }
+                else
+                dp[i][j]=dp[i-1][j];
+            }
+            
+        }
+        return dp[n][c];
+    }
+	public static void main (String[] args) {
+	    Main obj=new Main();
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int c=sc.nextInt();
+		    int val[]=new int[n];
+		    for(int i=0;i<n;i++)
+		    val[i]=sc.nextInt();
+		    int wt[]=new int[n];
+		    for(int i=0;i<n;i++)
+		    wt[i]=sc.nextInt();
+		    int dp[][]=new int[n+1][n+1];
+		    int profit=obj.knapsack(wt,val,c,n);
+		    System.out.println(profit);
+		}
+	}
+}
+
+
+
+
+
+
 
