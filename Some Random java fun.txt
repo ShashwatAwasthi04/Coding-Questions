@@ -53,3 +53,13 @@ X will be the most significant digit.
 
 
 No. of digits in N = Math.floor(Math.log10(N)) + 1;
+
+
+
+
+
+
+
+Splitting String to words
+
+use String.split("  ");
