@@ -18,7 +18,8 @@ class Solution {
 
         int i = m;
         int j = n;
-
+	//Now we are just doin like as in LCS Printing
+	//JUst that we add the remaining in last
         while (i > 0 && j > 0) {
             if (x.charAt(i - 1) == y.charAt(j - 1)) {
                 sb.append(x.charAt(i - 1));
