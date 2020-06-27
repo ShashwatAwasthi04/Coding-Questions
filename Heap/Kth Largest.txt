@@ -1,0 +1,29 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> minH= new PriorityQueue<Integer>();
+        for(int i=0;i<nums.length;i++){
+            minH.add(nums[i]);
+            if(minH.size()>k)
+                minH.poll();
+        }
+        return minH.peek();
+    }
+}
+
+
+
+Remember
+
+Always
+
+If Largest the min Heap
+If Smallest then Max Heap
+
+
+Also 
+
+MinHeap Syntax
+PriorityQueue<Integer> minH= new PriorityQueue<Integer>();
+
+MaxHeap Syntax
+PriorityQueue<Integer> minH= new PriorityQueue<Integer>(Collections.reverseOrder());
