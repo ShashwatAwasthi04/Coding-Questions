@@ -1,0 +1,39 @@
+class Solution {
+    
+public int[][] kClosest(int[][] points, int K) {
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<int[]>(new DistanceComparator());
+        int[][] answer = new int[K][];
+        
+        for(int i = 0; i < K; i++){
+            maxHeap.add(points[i]);
+        }
+        
+        for(int i = K; i < points.length; i++){
+            maxHeap.add(points[i]);
+            if(maxHeap.size() > K){
+                maxHeap.remove();
+            }
+        }
+        for(int i = 0; i < K; i++){
+            answer[i] = maxHeap.remove();
+        }
+        return answer;
+    }
+    
+
+
+public class DistanceComparator implements Comparator<int[]>{
+    public int compare(int[] p1, int[] p2){
+        
+        return p2[0]*p2[0] + p2[1]*p2[1] - p1[0]*p1[0] - p1[1]*p1[1];
+   
+}
+    
+}
+}
+
+
+
+
+
+
