@@ -41,17 +41,3 @@ public class KFrequentNumbers {
     } 
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-This Is same as Finding K closest
-Just the difference here is that 
-Map Key and Map Value are two attributes
