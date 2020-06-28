@@ -59,3 +59,37 @@ public class Graph {
     g.BFS(2);
   }
 }
+
+
+
+
+//Adjacency List
+class Traversal {
+    static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> g, int N) {
+        boolean vis[] = new boolean[N];
+            for (int i = 0; i <N; i++) vis[i] = false;
+            
+        int src = 0;
+        ArrayList<Integer> res = new ArrayList<Integer>(0);
+        Queue<Integer> q = new LinkedList<>();
+        vis[src] = true;      
+        q.add(src);           
+        while (q.size() != 0) 
+        {
+            src = q.poll();
+            res.add (src);
+            Iterator<Integer> it = g.get(src).iterator();
+            while (it.hasNext()) 
+            {
+                int n = it.next();
+                if (!vis[n]) 
+                {
+                    vis[n] = true;
+                    q.add(n);
+                }
+            }
+        }
+        return res;
+        
+    }
+}
