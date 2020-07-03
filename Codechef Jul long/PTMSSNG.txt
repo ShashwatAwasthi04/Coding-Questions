@@ -1,0 +1,48 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+   
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int val=4*n-1;
+		    
+		    HashMap<Integer,Integer> hmx=new HashMap<>();
+		    HashMap<Integer,Integer> hmy=new HashMap<>();
+		    for(int i=0;i<val;i++){
+		        int a=sc.nextInt();
+		        int b=sc.nextInt();
+		        hmx.put(a,hmx.getOrDefault(a,0)+1);
+		        hmy.put(b,hmy.getOrDefault(b,0)+1);
+		    }
+		    Iterator hmIterator = hmx.entrySet().iterator(); 
+		    while (hmIterator.hasNext()) { 
+            Map.Entry mapElement = (Map.Entry)hmIterator.next(); 
+            int v = (int)mapElement.getValue();
+            if(v%2==1)
+            System.out.print(mapElement.getKey()+" "); 
+        } 
+        Iterator hmyIterator = hmy.entrySet().iterator(); 
+		    while (hmyIterator.hasNext()) { 
+            Map.Entry mapElement = (Map.Entry)hmyIterator.next(); 
+            int v = (int)mapElement.getValue();
+            if(v%2==1)
+            System.out.print(mapElement.getKey()); 
+        }
+        System.out.println();
+		}
+	}
+}
+//MAp Code Above
+
+
+
