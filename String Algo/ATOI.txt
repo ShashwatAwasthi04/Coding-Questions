@@ -1,0 +1,44 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int atoi(final String A) {
+        if(A==null || A.length()==0){
+return 0;
+}
+String s=null;
+s=A.trim();
+boolean isNegative=false;
+if(s.charAt(0)==’-’ || s.charAt(0)==’+’){
+if(s.charAt(0)==’-’){
+isNegative=true;
+}
+s=s.substring(1);
+}
+double value=0L;
+
+    for(int i=0;i<s.length();i++){
+        char c=s.charAt(i);
+        if(Character.isDigit(c)){
+            int diff=c-'0';
+            value=value*10+diff;
+        }else{
+            break;
+        }
+    }
+    if(isNegative){
+        value=-value;
+    }
+    if(value>Integer.MAX_VALUE){
+        value= Long.valueOf((int)Integer.MAX_VALUE);
+    }
+    if(value<Integer.MIN_VALUE){
+        value= Long.valueOf((int)Integer.MIN_VALUE);
+    }
+    return (int) value;
+    }
+}
+
+
+
+
+
+
