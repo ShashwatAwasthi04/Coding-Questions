@@ -1,0 +1,41 @@
+//First non Repeating
+
+
+
+public class Solution {
+    public String solve(String A) {
+        StringBuilder ans=new StringBuilder();
+     Queue<Character> q=new LinkedList<>();
+    
+    int arr[]=new int[26];
+    for(int i=0;i<A.length();i++) {
+        char ch=A.charAt(i);
+        arr[ch-'a']++;
+        q.add(ch);
+        if(i==0 || arr[q.peek()-'a']==1) {
+             ans.append(q.peek());
+        }else {
+            while(!q.isEmpty()) {
+                if(arr[q.peek()-'a']!=1) {
+                    q.poll();
+                }else {
+                    break;
+                }
+            }
+             if(q.isEmpty()) ans.append('#');
+             else ans.append(q.peek());
+        }
+    }
+      return ans.toString();
+    }
+}
+
+
+
+
+
+
+
+
+
+
