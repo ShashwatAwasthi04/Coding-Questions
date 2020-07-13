@@ -57,3 +57,112 @@ class Codechef
 
 
 
+
+
+
+//10 points solution
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+     static long taste(int p,int q,int h[],int a[])
+    {
+        if (p==q)
+        {
+            return (long)a[p];
+        }
+        long ans=-1;
+        if(h[p]<=h[q])
+        {
+            return (long)-1;
+        }
+        if(p>q)
+        {
+           ans=a[q]+a[p];
+           int ht=h[q];
+           for(int i=q+1;i<p;i++)
+           {
+            
+               if( h[i]<h[p] )
+               {
+                  if(h[i]>ht) 
+                   {
+                       ht=h[i];
+                       ans+=a[i];
+                   }
+               }
+               else
+               {
+                   return (long)-1;
+               }
+               
+           }
+           
+        }
+        else
+        {
+            ans=a[q]+a[p];
+           int ht=h[q];
+           for(int i=q-1;i>p;i--)
+           {
+            
+               if( h[i]<h[p])
+               {
+                   if(h[i]>ht)
+                  {
+                      ht=h[i];
+                     ans+=a[i];
+                  }
+               }
+               else
+               {
+                   return (long)-1;
+               }
+           }
+           
+        }
+        return ans;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		
+		    String s1[]=br.readLine().split(" ");
+		    int n=Integer.parseInt(s1[0]);
+		    int Q=Integer.parseInt(s1[1]);
+		    int h[]=new int[n];
+		    int a[]=new int[n];
+		    String s2[]=br.readLine().split(" ");
+		    String s3[]=br.readLine().split(" ");
+		    for(int i=0;i<n;i++)
+		    {
+		        h[i]=Integer.parseInt(s2[i]);
+		        a[i]=Integer.parseInt(s3[i]);
+		    }
+		    while(Q>0)
+		    {
+		        String s[]=br.readLine().split(" ");
+		        if(s[0].equals("1"))
+		        {
+		            a[Integer.parseInt(s[1])-1]=Integer.parseInt(s[2]);
+		        }
+		        else
+		        {
+		            int p=Integer.parseInt(s[1])-1;
+		            int q=Integer.parseInt(s[2])-1;
+		            long ans=0;
+		            ans=taste(p,q,h,a);
+		            System.out.println(ans);
+		        }
+		        Q--;
+		    }
+		
+	}
+}
+
+
