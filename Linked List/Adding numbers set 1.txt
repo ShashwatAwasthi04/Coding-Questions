@@ -8,15 +8,7 @@ Node addTwoLists(Node first, Node second)
   
         // while both lists exist 
         while (first != null || second != null) { 
-            // Calculate value of next 
-            // digit in resultant list. 
-            // The next digit is sum 
-            // of following things 
-            // (i)  Carry 
-            // (ii) Next digit of first 
-            // list (if there is a next digit) 
-            // (ii) Next digit of second 
-            // list (if there is a next digit) 
+            
             sum = carry + (first != null ? first.data : 0) 
                   + (second != null ? second.data : 0); 
   
@@ -61,3 +53,27 @@ Node addTwoLists(Node first, Node second)
         // return head of the resultant list 
         return res; 
     } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
