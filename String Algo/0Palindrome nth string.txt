@@ -1,0 +1,29 @@
+import java.util.;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		char x='4';char y='5';
+		int l=(int)Math.ceil(Math.log(n+2)Math.log(2))-1;
+		int r=n-(int)Math.pow(2,l2)-1;
+		String a=;String b=;
+		for(int i=l-1;i=0;i--){
+		    int mask=1i;
+		    int bi=mask&r;
+		    if(bi0){
+		        a+=y;
+		        b+=y;
+		    }
+		    else{
+		        a+=x;
+		        b+=x;
+		    }
+		    
+		}
+		StringBuilder sb=new StringBuilder(b);
+		sb.reverse();
+		String res=sb.toString();
+		System.out.println(a+res);
+	}
+}
