@@ -9,11 +9,42 @@ public class Main
 		    ar[i]=sc.next();
 		}
 		HashMap<String,Integer> hm=new HashMap<>();
+		List<String> l=new ArrayList<>();
 		for(int i=0;i<n;i++){
 		    hm.put(ar[i],hm.getOrDefault(ar[i],0)+1);
+		    l.add(ar[i];)
 		}
-		for(int i=0;i<n;i++){
-		    System.out.println(hm.get(i));
-		}
+		SortComp com=new SortComp(hm);
+		
 	}
 }
+class SortComp implements Comparator<Integer>{
+    private final HashMap<String,Integer> f;
+    SortComp(HashMap<String,Integer> gg){
+        this.f=gg;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
