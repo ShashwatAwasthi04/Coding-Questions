@@ -1,0 +1,46 @@
+class CombinationIterator {
+         List<String> al;
+    public CombinationIterator(String characters, int combinationLength) {
+        al=new ArrayList<String>();
+        solve(characters,combinationLength,0,al,"");
+    }
+    
+    public String next() {
+        if(hasNext()){
+            String x=al.remove(0);
+        return x;
+        }
+        return "";
+    }
+    
+    public boolean hasNext() {
+        if(al.size()>0)
+            return true;
+        else 
+            return false;
+    }
+    public static void solve(String s,int l,int i,List<String> al,String res){
+        if(res.length()==l){
+            al.add(res);
+            return;
+        }
+        for(int j=i;j<s.length();j++){
+            solve(s,l,j+1,al,res+s.charAt(j));
+        }
+    }
+}
+
+/**
+ * Your CombinationIterator object will be instantiated and called as such:
+ * CombinationIterator obj = new CombinationIterator(characters, combinationLength);
+ * String param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
+
+
+
+
+
+
+
+
