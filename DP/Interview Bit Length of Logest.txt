@@ -1,0 +1,36 @@
+//This is LIs and LDS
+
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int longestSubsequenceLength(final List<Integer> A) {
+        int x=A.size();
+        int in[]=new int[x];
+        int de[]=new int[x];
+        if(x==0)
+        return 0;
+        in[0]=1;de[x-1]=1;
+        for(int i=1;i<x;i++){
+            in[i]=1;
+            for(int j=i-1;j>=0;j--){
+                if(A.get(i)>A.get(j))
+                in[i]=Math.max(in[i],in[j]+1);
+            }
+        }
+        for(int i=x-2;i>=0;i--){
+            de[i]=1;
+            for(int j=i+1;j<x;j++){
+                 if(A.get(i)>A.get(j))
+                de[i]=Math.max(de[i],de[j]+1);
+            }
+        }
+        int res=0;
+        for(int i=0;i<x;i++)
+        res=Math.max(res,in[i]+de[i]-1);
+        
+        return res;
+    }
+}
+
+
+
+
