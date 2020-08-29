@@ -1,0 +1,20 @@
+public class Solution {
+    public int solve(ArrayList<ArrayList<Integer>> A) {
+        int r=A.size();int c=A.get(0).size();
+        int dp[][]=new int[r][c];
+        dp[0][0]=A.get(0).get(0);
+        for(int i=1;i<r;i++){
+            for(int j=0;j<=i;j++){
+              if(j==0)
+              dp[i][j]=dp[i-1][j]+A.get(i).get(j);
+              else
+              dp[i][j]=Math.max(dp[i-1][j],dp[i-1][j-1])+A.get(i).get(j);
+            }
+        }
+        int max=dp[r-1][0];
+        for(int i=1;i<r;i++){
+            max=Math.max(max,dp[r-1][i]);
+        }
+        return max;
+    }
+}
