@@ -1,0 +1,24 @@
+private static int getMinCount(int[] arr, int n) {
+if (arr == null || arr.length == 0 || n < 1)
+return -1;
+int i = arr.length - 1;
+Arrays.sort(arr);
+int count = 0;
+while (n >= 0 && i >= 0) {
+count += n / arr[i];
+n = n % arr[i];
+i--;
+}
+return n != 0 ? -1 : count;
+}
+
+
+
+
+
+
+
+
+
+
+
