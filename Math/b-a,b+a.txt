@@ -1,0 +1,82 @@
+import java.util.*;
+
+class Main{
+    
+public static long power(long x,long n){
+    long ans=1;
+    while(n-->0){
+        ans=(ans*x)%100000007;
+    }
+    return ans;
+}
+public static void main(String args[])
+{    Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+    while(t-->0)
+    {
+        long mod=1000000007;
+       long a=sc.nextLong();long b=sc.nextLong();long n=sc.nextLong();
+       n--;
+        long c=b-a;long d=b+a;
+        if(n%2==0)
+        {
+            a=(a* ((long)power(2,n/2)%mod))%mod;
+            b=(b*((long)power(2,n/2)%mod))%mod;
+        }
+        else
+        {
+            a=(c* ((long)power(2,n/2)%mod))%mod;
+            b=(d*((long)power(2,n/2)%mod))%mod;
+        }
+        System.out.println(a+" "+b);
+    }
+    
+}
+}
+
+
+
+
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+long long int power(int x,int n)
+{
+    long long int ans=1;
+    while(n--)
+    {
+        ans=(ans*x)%1000000007;
+    }
+    return ans;
+    
+}
+int main()
+{
+    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        long long int mod=1000000007;
+        long long int a,b,n;
+        cin>>a>>b>>n;
+        n--;
+        long long int c=b-a;long long int d=b+a;
+        if(n%2==0)
+        {
+            a=(a* (power(2,n/2)%mod))%mod;
+            b=(b*(power(2,n/2)%mod))%mod;
+        }
+        else
+        {
+            a=(c*(power(2,n/2)%mod))%mod;
+            b=(d*(power(2,n/2)%mod))%mod;
+        }
+        cout<<a<<" "<<b<<endl;
+    }
+    return 0;
+}
