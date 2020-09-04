@@ -1,0 +1,46 @@
+import java.util.*;
+class Main{
+
+public static void main(String args[])
+{   Scanner sc=new Scanner(System.in);
+   int n=sc.nextInt();
+   int k=sc.nextInt();
+    int a[]=new int[n];
+    for(int i=0;i<n;i++)
+    a[i]=sc.nextInt();
+    int ar[]=new int[k];
+    int count=0;
+    int arrval=0;
+    int ans=-1;
+    int start=0,end=0;
+    while(end<n)
+    {
+        if(a[end]<k )
+        {
+            if(ar[a[end]]==0)
+            count++;
+            ar[a[end]]++;
+            arrval++;
+        }
+        while(count==k)
+        {
+            if(ans==-1 || ans>(end-start+1))
+            {
+                if(arrval!=(end-start+1))
+                ans=end-start+1;
+            }
+            if(a[start]<k)
+                {
+                ar[a[start]]--;
+                if(ar[a[start]]==0)
+                count--;
+                arrval--;
+                }
+                start++;
+        }
+        end++;
+    }
+    System.out.println(ans);
+    
+}
+}
