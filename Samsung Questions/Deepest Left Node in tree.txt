@@ -1,0 +1,32 @@
+static Node getDeepestLeftLeafNode(Node root) 
+{ 
+    if (root == null) 
+        return null; 
+  
+    // create a queue for level order traversal 
+    Queue<Node> q = new LinkedList<>(); 
+    q.add(root); 
+  
+    Node result = null; 
+  
+    // traverse until the queue is empty 
+    while (!q.isEmpty())  
+    { 
+        Node temp = q.peek(); 
+        q.remove(); 
+  
+        // Since we go level by level, the last  
+        // stored left leaf node is deepest one, 
+        if (temp.left != null)  
+        { 
+            q.add(temp.left); 
+            if (temp.left.left == null && 
+                temp.left.right == null) 
+                result = temp.left; 
+        } 
+          
+        if (temp.right != null) 
+            q.add(temp.right); 
+    } 
+    return result; 
+} 
