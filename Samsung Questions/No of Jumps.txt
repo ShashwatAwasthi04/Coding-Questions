@@ -1,0 +1,69 @@
+static Node findLCA(Node root, int n1, int n2) { 
+        // Base case 
+        if (root == null) 
+        if (root.key == n1 || root.key == n2) 
+            return root; 
+  
+        Node left_lca = findLCA(root.left, n1, n2); 
+        Node right_lca = findLCA(root.right, n1, n2); 
+  
+        if (left_lca != null && right_lca != null) 
+            return root; 
+        return (left_lca != null) ? left_lca : right_lca; 
+    } 
+  
+    static boolean CountTurn(Node root, int key, boolean turn) { 
+        if (root == null) 
+            return false; 
+  
+        // if found the key value in tree 
+        if (root.key == key) 
+            return true; 
+  
+        // Case 1: 
+        if (turn == true) { 
+            if (CountTurn(root.left, key, turn)) 
+                return true; 
+            if (CountTurn(root.right, key, !turn)) { 
+                Count += 1; 
+                return true; 
+            } 
+        } else // Case 2: 
+        { 
+            if (CountTurn(root.right, key, turn)) 
+                return true; 
+            if (CountTurn(root.left, key, !turn)) { 
+                Count += 1; 
+                return true; 
+            } 
+        } 
+        return false; 
+    } 
+    static int NumberOfTurn(Node root, int first, int second) { 
+        Node LCA = findLCA(root, first, second); 
+        if (LCA == null) 
+            return -1; 
+        Count = 0; 
+  
+        // case 1: 
+        if (LCA.key != first && LCA.key != second) {
+            if (CountTurn(LCA.right, second, false) 
+                    || CountTurn(LCA.left, second, true)) 
+                ; 
+            if (CountTurn(LCA.left, first, true) 
+                    || CountTurn(LCA.right, first, false)) 
+                ; 
+            return Count + 1; 
+        } 
+  
+        // case 2: 
+        if (LCA.key == first) { 
+            CountTurn(LCA.right, second, false); 
+            CountTurn(LCA.left, second, true); 
+            return Count; 
+        } else { 
+            CountTurn(LCA.right, first, false); 
+            CountTurn(LCA.left, first, true); 
+            return Count; 
+        } 
+    } 
